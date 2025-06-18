@@ -4,6 +4,9 @@
 
   <!-- Testimonials Section Component -->
   <Testimonials ref="testimonialsRef" />
+
+  <!-- FAQ Section Component -->
+  <FAQ ref="faqRef" />
 </template>
 
 <script setup>
@@ -14,6 +17,7 @@
   // Component refs
   const heroRef = ref(null);
   const testimonialsRef = ref(null);
+  const faqRef = ref(null);
 
   // Inject the layout timeline to coordinate animations
   const layoutTimeline = inject("layoutTimeline");
@@ -35,9 +39,7 @@
 
   // Animation setup
   onMounted(() => {
-    if (heroRef.value?.animateHero) {
-      heroTl = heroRef.value.animateHero();
-    }
+    heroTl = heroRef.value?.animateHero ? heroRef.value.animateHero() : null;
 
     // Wait for layout timeline to be available, then add hero animations
     if (layoutTimeline?.value && heroTl) {
@@ -49,6 +51,6 @@
       }, 500);
     }
 
-    // Note: Testimonials animation is handled by ScrollTrigger in the component itself
+    // Note: Testimonials and FAQ animations are handled by ScrollTrigger in their components
   });
 </script>

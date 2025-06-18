@@ -16,26 +16,29 @@
         </p>
       </div>
 
-      <!-- Testimonials Grid -->
+      <!-- Testimonials Flex Container -->
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch"
-        ref="testimonialsGrid"
+        class="flex flex-wrap justify-center items-stretch gap-6 lg:gap-8"
+        ref="testimonialsContainer"
       >
         <!-- Testimonial 1 -->
-        <div class="testimonial-card group h-80" ref="testimonial1">
+        <div
+          class="testimonial-item flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
+          ref="testimonial1"
+        >
           <div
-            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-100 w-full h-full"
+            class="testimonial-card group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 bg-gradient-to-br from-gray-50 to-gray-100 h-80"
           >
             <img
               src="/images/review1.jpg"
               alt="Customer testimonial 1"
-              class="w-full h-full object-contain"
+              class="absolute inset-0 w-full h-full object-contain rounded-2xl"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"
             ></div>
             <div
-              class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"
             >
               <p class="text-sm font-medium">Amazing natural products!</p>
             </div>
@@ -43,20 +46,23 @@
         </div>
 
         <!-- Testimonial 2 -->
-        <div class="testimonial-card group h-80" ref="testimonial2">
+        <div
+          class="testimonial-item flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
+          ref="testimonial2"
+        >
           <div
-            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-100 w-full h-full"
+            class="testimonial-card group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 bg-gradient-to-br from-gray-50 to-gray-100 h-80"
           >
             <img
               src="/images/review2.jpg"
               alt="Customer testimonial 2"
-              class="w-full h-full object-contain"
+              class="absolute inset-0 w-full h-full object-contain rounded-2xl"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"
             ></div>
             <div
-              class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"
             >
               <p class="text-sm font-medium">Love the quality and care!</p>
             </div>
@@ -64,20 +70,23 @@
         </div>
 
         <!-- Testimonial 3 -->
-        <div class="testimonial-card group h-80" ref="testimonial3">
+        <div
+          class="testimonial-item flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
+          ref="testimonial3"
+        >
           <div
-            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-100 w-full h-full"
+            class="testimonial-card group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 bg-gradient-to-br from-gray-50 to-gray-100 h-80"
           >
             <img
               src="/images/review3.jpg"
               alt="Customer testimonial 3"
-              class="w-full h-full object-contain"
+              class="absolute inset-0 w-full h-full object-contain rounded-2xl"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"
             ></div>
             <div
-              class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"
             >
               <p class="text-sm font-medium">Best natural skincare ever!</p>
             </div>
@@ -85,20 +94,23 @@
         </div>
 
         <!-- Testimonial 4 -->
-        <div class="testimonial-card group h-80" ref="testimonial4">
+        <div
+          class="testimonial-item flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
+          ref="testimonial4"
+        >
           <div
-            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-100 w-full h-full"
+            class="testimonial-card group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 bg-gradient-to-br from-gray-50 to-gray-100 h-80"
           >
             <img
               src="/images/review4.jpg"
               alt="Customer testimonial 4"
-              class="w-full h-full object-contain"
+              class="absolute inset-0 w-full h-full object-contain rounded-2xl"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"
             ></div>
             <div
-              class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"
             >
               <p class="text-sm font-medium">Transformed my skin routine!</p>
             </div>
@@ -106,20 +118,23 @@
         </div>
 
         <!-- Testimonial 5 -->
-        <div class="testimonial-card group h-80" ref="testimonial5">
+        <div
+          class="testimonial-item flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
+          ref="testimonial5"
+        >
           <div
-            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-100 w-full h-full"
+            class="testimonial-card group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 bg-gradient-to-br from-gray-50 to-gray-100 h-80"
           >
             <img
               src="/images/review5.jpg"
               alt="Customer testimonial 5"
-              class="w-full h-full object-contain"
+              class="absolute inset-0 w-full h-full object-contain rounded-2xl"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"
             ></div>
             <div
-              class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"
             >
               <p class="text-sm font-medium">Pure ingredients, pure results!</p>
             </div>
@@ -127,20 +142,23 @@
         </div>
 
         <!-- Testimonial 6 -->
-        <div class="testimonial-card group h-80" ref="testimonial6">
+        <div
+          class="testimonial-item flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
+          ref="testimonial6"
+        >
           <div
-            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-gray-100 w-full h-full"
+            class="testimonial-card group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 bg-gradient-to-br from-gray-50 to-gray-100 h-80"
           >
             <img
               src="/images/review6.jpg"
               alt="Customer testimonial 6"
-              class="w-full h-full object-contain"
+              class="absolute inset-0 w-full h-full object-contain rounded-2xl"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"
             ></div>
             <div
-              class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"
             >
               <p class="text-sm font-medium">Highly recommend to everyone!</p>
             </div>
@@ -149,15 +167,15 @@
       </div>
 
       <!-- Call to Action -->
-      <div class="text-center mt-12" ref="cta">
-        <p class="text-lg text-gray-600 mb-6">
-          Join thousands of satisfied customers who trust AMAN Blessed Naturals
-        </p>
-        <button
-          class="bg-gradient-to-r from-lime-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+      <div class="text-center mt-16" ref="cta">
+        <div
+          class="bg-gradient-to-r from-lime-50 to-cyan-50 rounded-3xl p-8 max-w-2xl mx-auto"
         >
-          Share Your Story
-        </button>
+          <p class="text-xl text-gray-700 mb-6 font-medium">
+            Join thousands of satisfied customers who trust AMAN Blessed
+            Naturals
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -174,7 +192,7 @@
   // Template refs
   const testimonialsSection = ref(null);
   const heading = ref(null);
-  const testimonialsGrid = ref(null);
+  const testimonialsContainer = ref(null);
   const cta = ref(null);
 
   // Individual testimonial refs
@@ -189,15 +207,15 @@
   const animateTestimonials = () => {
     const tl = gsap.timeline();
 
-    // Animate heading
+    // Simple heading fade-in
     tl.fromTo(
       heading.value,
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
     );
 
-    // Animate testimonial cards with stagger
-    const testimonialCards = [
+    // Simple testimonial cards fade-in with stagger
+    const testimonialItems = [
       testimonial1.value,
       testimonial2.value,
       testimonial3.value,
@@ -207,12 +225,11 @@
     ].filter(Boolean);
 
     tl.fromTo(
-      testimonialCards,
-      { y: 80, opacity: 0, scale: 0.9 },
+      testimonialItems,
+      { y: 40, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        scale: 1,
         duration: 0.6,
         stagger: 0.15,
         ease: "power2.out",
@@ -220,10 +237,10 @@
       "-=0.4"
     );
 
-    // Animate CTA
+    // Simple CTA fade-in
     tl.fromTo(
       cta.value,
-      { y: 30, opacity: 0 },
+      { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
       "-=0.3"
     );
@@ -232,7 +249,7 @@
   };
 
   onMounted(() => {
-    // Set up scroll-triggered animation
+    // Set up scroll-triggered animation - ONLY fade in once
     ScrollTrigger.create({
       trigger: testimonialsSection.value,
       start: "top 70%",
@@ -242,31 +259,7 @@
       once: true,
     });
 
-    // Add parallax effect to testimonial cards
-    const testimonialCards = [
-      testimonial1.value,
-      testimonial2.value,
-      testimonial3.value,
-      testimonial4.value,
-      testimonial5.value,
-      testimonial6.value,
-    ].filter(Boolean);
-
-    testimonialCards.forEach((card, index) => {
-      gsap.fromTo(
-        card,
-        { y: 0 },
-        {
-          y: -20 * (index % 2 === 0 ? 1 : -1), // Alternate direction for visual interest
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
-          },
-        }
-      );
-    });
+    // Remove all floating and parallax animations - testimonials stay stable
   });
 
   // Expose methods to parent
@@ -276,33 +269,39 @@
 </script>
 
 <style scoped>
-  .testimonial-card {
+  .testimonial-item {
     opacity: 0;
-    transform: translateY(80px) scale(0.9);
+    transform: translateY(40px);
   }
 
-  /* Custom hover effects */
+  /* Enhanced hover effects */
   .testimonial-card:hover {
-    transform: translateY(-5px) scale(1.02);
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
 
-  /* Staggered animation delays for visual appeal */
-  .testimonial-card:nth-child(1) {
-    animation-delay: 0.1s;
+  /* Smooth transitions for all elements */
+  .testimonial-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .testimonial-card:nth-child(2) {
-    animation-delay: 0.2s;
+
+  /* Responsive flex adjustments */
+  @media (max-width: 640px) {
+    .testimonial-item {
+      width: 100% !important;
+      max-width: 400px;
+    }
   }
-  .testimonial-card:nth-child(3) {
-    animation-delay: 0.3s;
+
+  @media (min-width: 641px) and (max-width: 1023px) {
+    .testimonial-item {
+      width: calc(50% - 12px) !important;
+    }
   }
-  .testimonial-card:nth-child(4) {
-    animation-delay: 0.4s;
-  }
-  .testimonial-card:nth-child(5) {
-    animation-delay: 0.5s;
-  }
-  .testimonial-card:nth-child(6) {
-    animation-delay: 0.6s;
+
+  @media (min-width: 1024px) {
+    .testimonial-item {
+      width: calc(33.333% - 16px) !important;
+    }
   }
 </style>
