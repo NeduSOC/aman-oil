@@ -271,7 +271,7 @@
             :class="{ 'rounded-b-none': openFAQs[5] }"
           >
             <h3 class="text-lg md:text-xl font-semibold text-gray-900 pr-4">
-              Which of your pap powder is best for weening baby?
+              Which of your pap powder is best for weaning baby?
             </h3>
             <div
               class="flex-shrink-0 transform transition-transform duration-300"
