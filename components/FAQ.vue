@@ -321,18 +321,20 @@
           <p class="text-lg text-gray-700 mb-6">
             Still have questions? We're here to help!
           </p>
-          <a
+          <!-- <a
             href="https://wa.me/2347057009327"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Contact us on WhatsApp"
-          >
+          > -->
+          <NuxtLink to="/contact">
             <button
               class="bg-gradient-to-r from-lime-500 cursor-pointer to-cyan-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
             >
-              Contact Support on whatsapp
+              Contact Us
             </button>
-          </a>
+          </NuxtLink>
+          <!-- </a> -->
         </div>
       </div>
     </div>

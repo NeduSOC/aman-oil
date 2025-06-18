@@ -12,6 +12,11 @@
               class="w-12 h-12 bg-gradient-to-r from-lime-400 to-cyan-400 rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-200"
             >
               <span class="text-white font-bold text-xl">AB</span>
+              <!-- <img
+                src="/images/aman.jpg"
+                alt="Natural cosmetics and lifestyle products"
+                class="w-full h-full"
+              /> -->
             </div>
           </NuxtLink>
         </div>
