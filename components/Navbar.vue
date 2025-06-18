@@ -173,6 +173,9 @@
   const animateNavbar = () => {
     const tl = gsap.timeline();
 
+    // Reset navbar to hidden state for animation
+    gsap.set(navbar.value, { y: -100, opacity: 0 });
+
     // Navbar animation
     tl.fromTo(
       navbar.value,
@@ -200,7 +203,10 @@
   };
 
   onMounted(() => {
-    // Navbar background on scroll
+    // Run animation
+    animateNavbar();
+
+    // Navbar background scroll effect
     ScrollTrigger.create({
       start: "top -80",
       end: 99999,
