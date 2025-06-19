@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibility: {
     compatibilityDate: "2025-05-05",
   },
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
   postcss: {
     plugins: {
       "@tailwindcss/postcss": {},

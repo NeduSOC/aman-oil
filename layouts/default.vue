@@ -5,11 +5,14 @@
 
     <!-- Page Content Slot -->
     <main>
-      <NuxtPage />
+      <slot />
     </main>
 
     <!-- Footer Component -->
     <Footer ref="footerRef" />
+
+    <!-- Toast Component -->
+    <Toast />
 
     <!-- Floating Action Button -->
     <div class="fixed bottom-8 right-8 z-40" ref="fab">
@@ -35,12 +38,14 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, onUnmounted, provide } from "vue";
+  import { ref, onMounted, onUnmounted, provide, nextTick } from "vue";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   // Register GSAP plugins
-  gsap.registerPlugin(ScrollTrigger);
+  if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+  }
 
   // Component refs
   const navbarRef = ref(null);
@@ -51,18 +56,23 @@
   const layoutTimeline = ref(null);
 
   // Animation setup
-  onMounted(() => {
+  onMounted(async () => {
+    // Wait for components to be ready
+    await nextTick();
+
     // Create master timeline for layout animations
     layoutTimeline.value = gsap.timeline();
 
     // Add navbar animations
     if (navbarRef.value?.animateNavbar) {
       const navbarTl = navbarRef.value.animateNavbar();
-      layoutTimeline.value.add(navbarTl, 0);
+      if (navbarTl) {
+        layoutTimeline.value.add(navbarTl, 0);
+      }
     }
 
     // Add footer animations (triggered on scroll)
-    if (footerRef.value?.animateFooter) {
+    if (footerRef.value?.animateFooter && typeof window !== "undefined") {
       ScrollTrigger.create({
         trigger: footerRef.value.$el,
         start: "top 80%",
@@ -74,12 +84,14 @@
     }
 
     // FAB animation
-    layoutTimeline.value.fromTo(
-      fab.value,
-      { scale: 0, rotation: 180 },
-      { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.7)" },
-      "-=0.3"
-    );
+    if (fab.value) {
+      layoutTimeline.value.fromTo(
+        fab.value,
+        { scale: 0, rotation: 180 },
+        { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.7)" },
+        "-=0.3"
+      );
+    }
   });
 
   // Provide the timeline to child pages so they can coordinate animations
@@ -87,7 +99,9 @@
 
   // Cleanup
   onUnmounted(() => {
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    if (typeof window !== "undefined") {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    }
   });
 </script>
 

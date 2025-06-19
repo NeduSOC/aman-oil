@@ -12,11 +12,6 @@
               class="w-12 h-12 bg-gradient-to-r from-lime-400 to-cyan-400 rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-200"
             >
               <span class="text-white font-bold text-xl">AB</span>
-              <!-- <img
-                src="/images/aman.jpg"
-                alt="Natural cosmetics and lifestyle products"
-                class="w-full h-full"
-              /> -->
             </div>
           </NuxtLink>
         </div>
@@ -63,26 +58,56 @@
           </div>
         </div>
 
-        <!-- Mobile menu button -->
-        <div class="md:hidden">
+        <!-- Cart and Mobile menu -->
+        <div class="flex items-center space-x-4">
+          <!-- Cart Icon -->
           <button
-            @click="toggleMobileMenu"
-            class="text-gray-700 hover:text-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 rounded-md p-2"
+            @click="handleCartClick"
+            class="relative p-2 text-gray-700 hover:text-lime-600 transition-colors duration-200"
           >
             <svg
-              class="h-6 w-6"
+              class="w-6 h-6"
               fill="none"
-              viewBox="0 0 24 24"
               stroke="currentColor"
+              viewBox="0 0 24 24"
             >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zM9 21a2 2 0 100-4 2 2 0 000 4z"
               />
             </svg>
+            <!-- Cart Count Badge -->
+            <span
+              v-if="cartStore.itemCount > 0"
+              class="absolute -top-1 -right-1 bg-lime-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold"
+            >
+              {{ cartStore.itemCount }}
+            </span>
           </button>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden">
+            <button
+              @click="toggleMobileMenu"
+              class="text-gray-700 hover:text-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 rounded-md p-2"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -134,6 +159,12 @@
           >
             Privacy Policy
           </NuxtLink>
+          <button
+            @click="handleCartClick"
+            class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-lime-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+          >
+            Cart ({{ cartStore.itemCount }})
+          </button>
         </div>
       </div>
     </div>
@@ -141,12 +172,21 @@
 </template>
 
 <script setup>
-  import { ref, onMounted } from "vue";
+  import { ref, onMounted, nextTick } from "vue";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { useCartStore } from "~/stores/cart";
+  import { useToast } from "~/composables/useToast";
+  import { navigateTo } from "#app";
+
+  // Cart store and toast
+  const cartStore = useCartStore();
+  const { warning } = useToast();
 
   // Register GSAP plugins
-  gsap.registerPlugin(ScrollTrigger);
+  if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+  }
 
   // Reactive data
   const mobileMenuOpen = ref(false);
@@ -161,7 +201,7 @@
   const toggleMobileMenu = () => {
     mobileMenuOpen.value = !mobileMenuOpen.value;
 
-    if (mobileMenuOpen.value) {
+    if (mobileMenuOpen.value && mobileMenu.value) {
       gsap.fromTo(
         mobileMenu.value,
         { opacity: 0, y: -20 },
@@ -174,12 +214,20 @@
     mobileMenuOpen.value = false;
   };
 
+  const handleCartClick = () => {
+    if (cartStore.isEmpty) {
+      warning("Empty cart, please select a product to purchase", 4000);
+    } else {
+      navigateTo("/cart");
+    }
+    closeMobileMenu();
+  };
+
   // Expose animation function for parent component
   const animateNavbar = () => {
-    const tl = gsap.timeline();
+    if (!navbar.value) return null;
 
-    // Reset navbar to hidden state for animation
-    gsap.set(navbar.value, { y: -100, opacity: 0 });
+    const tl = gsap.timeline();
 
     // Navbar animation
     tl.fromTo(
@@ -189,45 +237,60 @@
     );
 
     // Logo animation
-    tl.fromTo(
-      logo.value,
-      { scale: 0, rotation: -180 },
-      { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.7)" },
-      "-=0.4"
-    );
+    if (logo.value) {
+      tl.fromTo(
+        logo.value,
+        { scale: 0, rotation: -180 },
+        { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.7)" },
+        "-=0.4"
+      );
+    }
 
     // Nav items animation
-    tl.fromTo(
-      navItems.value?.children || [],
-      { y: -30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" },
-      "-=0.3"
-    );
+    if (navItems.value?.children) {
+      tl.fromTo(
+        navItems.value.children,
+        { y: -30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" },
+        "-=0.3"
+      );
+    }
 
     return tl;
   };
 
-  onMounted(() => {
-    // Run animation
+  onMounted(async () => {
+    // Wait for next tick to ensure DOM is ready
+    // await nextTick();
     animateNavbar();
 
-    // Navbar background scroll effect
-    ScrollTrigger.create({
-      start: "top -80",
-      end: 99999,
-      onEnter: () => {
-        navbar.value?.classList.add("bg-white/95", "shadow-md");
-      },
-      onLeave: () => {
-        navbar.value?.classList.remove("bg-white/95", "shadow-md");
-      },
-      onEnterBack: () => {
-        navbar.value?.classList.add("bg-white/95", "shadow-md");
-      },
-      onLeaveBack: () => {
-        navbar.value?.classList.remove("bg-white/95", "shadow-md");
-      },
-    });
+    // Ensure navbar is visible by default
+    if (navbar.value) {
+      gsap.set(navbar.value, {
+        y: 0,
+        opacity: 1,
+        visibility: "visible",
+      });
+    }
+
+    // Only set up ScrollTrigger if we're in the browser
+    if (typeof window !== "undefined") {
+      ScrollTrigger.create({
+        start: "top -80",
+        end: 99999,
+        onUpdate: (self) => {
+          if (navbar.value) {
+            if (self.direction === 1 && self.progress > 0.1) {
+              // Scrolling down
+              navbar.value.classList.add("bg-white/95", "shadow-md");
+            } else if (self.direction === -1 || self.progress <= 0.1) {
+              // Scrolling up or at top
+              navbar.value.classList.remove("bg-white/95", "shadow-md");
+            }
+          }
+        },
+      });
+    }
   });
 
   // Expose methods to parent
@@ -254,16 +317,29 @@
   }
 
   /* Smooth transitions */
-  a {
+  a,
+  button {
     transition: all 0.2s ease-in-out;
   }
 
-  /* Logo hover effect */
-  .logo-hover {
-    transition: transform 0.2s ease;
+  /* Ensure navbar is always visible */
+  nav {
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
-  .logo-hover:hover {
-    transform: scale(1.05);
+  /* Cart badge animation */
+  .cart-badge {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
   }
 </style>
